@@ -11,9 +11,11 @@ export PAGER=less
 export DIFFPROG=delta
 export GOPROXY=https://goproxy.io,direct
 
+export SDKMAN_DIR=$XDG_DATA_HOME/sdkman
 export RUSTUP_HOME=$XDG_DATA_HOME/rustup
 export CARGO_HOME=$XDG_DATA_HOME/cargo
 export GOPATH=$XDG_DATA_HOME/go
 export GRADLE_USER_HOME=$XDG_DATA_HOME/gradle
 
+[[ -s "$XDG_DATA_HOME/sdkman/bin/sdkman-init.sh" ]] && source "$XDG_DATA_HOME/sdkman/bin/sdkman-init.sh"
 eval "$(starship init bash)"
