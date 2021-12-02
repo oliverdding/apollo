@@ -8,16 +8,16 @@ COPY ./etc/ /etc/
 
 RUN echo -e '\n## setting system' && \
     dnf makecache && \
-    dnf -q -y install glibc-locale-source glibc-langpack-en && \
+    dnf -q -y install glibc-locale-source glibc-langpack-en dnf-plugins-core && \
     localedef --quiet --force -i en_US -f UTF-8 en_US.UTF-8 && \
     ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     echo 'root:root' | chpasswd && \
-    echo -e '\n## installing packages' && \
-    sudo dnf -q -y install https://mirrors.ustc.edu.cn/rpmfusion/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.ustc.edu.cn/rpmfusion/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm && \
-    dnf -q -y install openssh-server dnf-plugins-core which file unzip zip findutils ncurses tar neovim ripgrep git starship git-delta bash-completion zoxide fzf && \
-    dnf -q -y install dua-cli exa hexyl procs && \
     dnf -q -y copr enable luminoso/k9s && \
     dnf -q -y copr enable audron/kubectx && \
+    echo -e '\n## installing packages' && \
+    sudo dnf -q -y install https://mirrors.ustc.edu.cn/rpmfusion/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.ustc.edu.cn/rpmfusion/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm && \
+    dnf -q -y install openssh-server which file unzip zip findutils ncurses tar neovim ripgrep git starship git-delta bash-completion zoxide fzf && \
+    dnf -q -y install dua-cli exa hexyl procs && \
     dnf -q -y install kubectl kubectx k9s && \
     dnf -q -y install gcc gdb && \
     dnf clean all && \
