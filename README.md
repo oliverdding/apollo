@@ -1,2 +1,3 @@
 # apollo
-Development environment with archlinux docker image
+
+Development environment based on fedora docker image
