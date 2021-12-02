@@ -16,9 +16,13 @@ export RUSTUP_HOME=$XDG_DATA_HOME/rustup
 export CARGO_HOME=$XDG_DATA_HOME/cargo
 export GOPATH=$XDG_DATA_HOME/go
 export GRADLE_USER_HOME=$XDG_DATA_HOME/gradle
+export K9SCONFIG=$XDG_CONFIG_HOME/k9s
+export BASH_COMPLETION_USER_FILE=$XDG_CONFIG_HOME/bash-completion/bash_completion
+export HISTFILE=$XDG_DATA_HOME/bash/history
 
 [[ -f /etc/bashrc ]] && . /etc/bashrc
 [[ -f ~/.local/share/cargo/env ]] && . ~/.local/share/cargo/env
 [[ -s "$XDG_DATA_HOME/sdkman/bin/sdkman-init.sh" ]] && . "$XDG_DATA_HOME/sdkman/bin/sdkman-init.sh"
 
+eval "$(zoxide init bash)"
 eval "$(starship init bash)"

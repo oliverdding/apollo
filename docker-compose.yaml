@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  apollo:
+    image: oliverdd/apollo:latest
+    working_dir: /data
+    volumes:
+      - ~/.ssh:/root/.ssh
+      - ~/.gpg:/root.gpg
+      - ~/.kube:/root/.kube
+      - ~/.config/nvim:/root/.config/nvim
+      - ~/.config/git:/root/.config/git
+      - /tmp/apollo/cache:/root/.cache
+      - /tmp/apollo/sbt:/root/.sbt
+      - /tmp/apollo/ivy2:/root/.ivy2
+      - /tmp/vscode-server:/root/.vscode-server
+      - ~/Developer:/data/Developer
