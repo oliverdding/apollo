@@ -15,19 +15,7 @@ RUN echo -e '\n## setting system' && \
     dnf -q -y copr enable luminoso/k9s && \
     dnf -q -y copr enable audron/kubectx && \
     echo -e '\n## installing packages' && \
-    sudo dnf -q -y install https://mirrors.ustc.edu.cn/rpmfusion/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.ustc.edu.cn/rpmfusion/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm && \
-    dnf -q -y install openssh-server which file unzip zip findutils ncurses tar neovim ripgrep git starship git-delta bash-completion zoxide fzf && \
-    dnf -q -y install dua-cli exa hexyl procs && \
-    dnf -q -y install kubectl kubectx k9s && \
-    dnf -q -y install gcc gdb && \
-    dnf clean all && \
-    mkdir -p /root/.local/bin && \
-    curl https://raw.githubusercontent.com/birdayz/kaf/master/godownloader.sh | BINDIR=$HOME/.local/bin bash && \
-    curl -s -L https://get.helm.sh/helm-v2.15.2-linux-amd64.tar.gz | tar -xzf - -C /root/.local/bin && mv /root/.local/bin/linux-amd64/helm /root/.local/bin/helm2 && mv /root/.local/bin/linux-amd64/tiller /root/.local/bin && rm -rf /root/.local/bin/linux-amd64 && \
-    curl -s -L https://get.helm.sh/helm-v3.7.1-linux-amd64.tar.gz | tar -xzf - -C /root/.local/bin && mv /root/.local/bin/linux-amd64/helm /root/.local/bin/helm3 && rm -rf /root/.local/bin/linux-amd64 && \
-    ln -s -f ~/.local/bin/helm3 ~/.local/bin/helm && \
-    echo -e '\n### installing go' && \
-    curl -s -L https://go.dev/dl/go1.15.15.linux-amd64.tar.gz | tar -xzf - -C /usr/local/ && \
+    dnf -q -y install zip unzip findutils && \
     echo -e '\n### installing java, scala and sbt' && \
     export SDKMAN_DIR=/root/.local/share/sdkman && curl -s "https://get.sdkman.io" | bash && \
     sed -i 's/sdkman_auto_answer=false/sdkman_auto_answer=true/' /root/.local/share/sdkman/etc/config && \
@@ -40,6 +28,20 @@ RUN echo -e '\n## setting system' && \
     sdk install sbt 1.3.8 && \
     sdk default sbt 1.3.8 && \
     rm -rf /root/.local/share/sdkman/tmp/* && \
+    echo -e '\n### installing necessary packages' && \
+    dnf -q -y install https://mirrors.ustc.edu.cn/rpmfusion/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.ustc.edu.cn/rpmfusion/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm && \
+    dnf -q -y install openssh-server which file ncurses tar neovim ripgrep git starship git-delta bash-completion zoxide fzf && \
+    dnf -q -y install dua-cli exa hexyl procs && \
+    dnf -q -y install kubectl kubectx k9s && \
+    dnf -q -y install gcc gdb && \
+    dnf clean all && \
+    mkdir -p /root/.local/bin && \
+    curl https://raw.githubusercontent.com/birdayz/kaf/master/godownloader.sh | BINDIR=$HOME/.local/bin bash && \
+    curl -s -L https://get.helm.sh/helm-v2.15.2-linux-amd64.tar.gz | tar -xzf - -C /root/.local/bin && mv /root/.local/bin/linux-amd64/helm /root/.local/bin/helm2 && mv /root/.local/bin/linux-amd64/tiller /root/.local/bin && rm -rf /root/.local/bin/linux-amd64 && \
+    curl -s -L https://get.helm.sh/helm-v3.7.1-linux-amd64.tar.gz | tar -xzf - -C /root/.local/bin && mv /root/.local/bin/linux-amd64/helm /root/.local/bin/helm3 && rm -rf /root/.local/bin/linux-amd64 && \
+    ln -s -f ~/.local/bin/helm3 ~/.local/bin/helm && \
+    echo -e '\n### installing go' && \
+    curl -s -L https://go.dev/dl/go1.15.15.linux-amd64.tar.gz | tar -xzf - -C /usr/local/ && \
     echo -e '\n### installing rust' && \
     export RUSTUP_HOME=/root/.local/share/rustup && \
     export CARGO_HOME=/root/.local/share/cargo && \
