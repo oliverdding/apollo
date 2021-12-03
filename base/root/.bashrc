@@ -19,6 +19,8 @@ export GRADLE_USER_HOME=$XDG_DATA_HOME/gradle
 export K9SCONFIG=$XDG_CONFIG_HOME/k9s
 export BASH_COMPLETION_USER_FILE=$XDG_CONFIG_HOME/bash-completion/bash_completion
 export HISTFILE=$XDG_DATA_HOME/bash/history
+export GDBHISTFILE=$XDG_DATA_HOME/gdb/history
+export LESSHISTFILE=-
 
 [[ -f /etc/bashrc ]] && . /etc/bashrc
 [[ -f ~/.local/share/cargo/env ]] && . ~/.local/share/cargo/env
