@@ -12,5 +12,5 @@ Development environment based on fedora docker image
   - ~/.config/git
   - ~/.config/nvim
 2. Put your project in ~/Developer
-3. `docker-compose up -d docker-compose.yaml apollo`
-4. Use VSCode with Visual Studio Code Remote - Containers to attach the container
+3. Register your project in a docker-compose file on the given template [docker-compose.yaml](./docker-compose.yaml)
+4. Start the container && Use VSCode with Visual Studio Code Remote - Containers to attach the container

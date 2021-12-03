@@ -1,17 +1,50 @@
 version: "3"
 
 services:
-  apollo:
-    image: oliverdd/apollo:latest
-    working_dir: /data
+  go:
+    image: oliverdd/apollo:go
     volumes:
       - ~/.ssh:/root/.ssh
-      - ~/.gpg:/root.gpg
+      - ~/.gpg:/root/.gpg
       - ~/.kube:/root/.kube
       - ~/.config/nvim:/root/.config/nvim
       - ~/.config/git:/root/.config/git
-      - /tmp/apollo/cache:/root/.cache
-      - /tmp/apollo/sbt:/root/.sbt
-      - /tmp/apollo/ivy2:/root/.ivy2
-      - /tmp/vscode-server:/root/.vscode-server
-      - ~/Developer:/data/Developer
+      - ~/Temporary/apollo/go/cache:/root/.local/share/go
+      - ~/Temporary/apollo/go/vscode-server:/root/.vscode-server
+      - ~/Developer:/root/Developer
+
+  rust:
+    image: oliverdd/apollo:rust
+    volumes:
+      - ~/.ssh:/root/.ssh
+      - ~/.gpg:/root/.gpg
+      - ~/.kube:/root/.kube
+      - ~/.config/nvim:/root/.config/nvim
+      - ~/.config/git:/root/.config/git
+      - ~/Developer:/root/Developer
+
+  java:
+    image: oliverdd/apollo:java
+    volumes:
+      - ~/.ssh:/root/.ssh
+      - ~/.gpg:/root/.gpg
+      - ~/.kube:/root/.kube
+      - ~/.config/nvim:/root/.config/nvim
+      - ~/.config/git:/root/.config/git
+      - ~/Temporary/apollo/java/gradle:/root/.local/share/gradle
+      - ~/Temporary/apollo/java/maven:/root/.mvn
+
+  scala:
+    image: oliverdd/apollo:scala
+    volumes:
+      - ~/.ssh:/root/.ssh
+      - ~/.gpg:/root/.gpg
+      - ~/.kube:/root/.kube
+      - ~/.config/nvim:/root/.config/nvim
+      - ~/.config/git:/root/.config/git
+      - ~/Temporary/apollo/scala/sbt:/root/.sbt
+      - ~/Temporary/apollo/scala/ivy2:/root/.ivy2
+      - ~/Temporary/apollo/scala/gradle:/root/.local/share/gradle
+      - ~/Temporary/apollo/scala/maven:/root/.mvn
+      - ~/Temporary/apollo/scala/vscode-server:/root/.vscode-server
+      - ~/Developer:/root/Developer
