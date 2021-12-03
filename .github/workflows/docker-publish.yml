@@ -1,0 +1,43 @@
+name: Docker
+
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+on:
+  schedule:
+    - cron: '27 14 * * *'
+  push:
+    branches: [ main ]
+
+env:
+  # Use docker.io for Docker Hub if empty
+  REGISTRY: docker.io
+  # github.repository as <account>/<repo>
+  IMAGE_NAME: oliverdd/apollo
+
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # https://github.com/docker/login-action
+      - name: Log into registry ${{ env.REGISTRY }}
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v1
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push Docker image
+        run: bash build.sh
