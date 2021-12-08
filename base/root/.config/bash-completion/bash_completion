@@ -1,6 +1,14 @@
 #!/bin/bash
 
-source <(kaf completion bash)
-source <(kubectl completion bash)
-source <(helm completion bash)
-source <(rustup completions bash)
+if !command -v kaf &>/dev/null; then
+    source <(kaf completion bash)
+fi
+if !command -v kubectl &>/dev/null; then
+    source <(kubectl completion bash)
+fi
+if !command -v helm &>/dev/null; then
+    source <(helm completion bash)
+fi
+if !command -v rustup &>/dev/null; then
+    source <(rustup completions bash)
+fi
