@@ -1,5 +1,5 @@
 FROM oliverdd/apollo:base
 
-RUN dnf makecache && \
-    dnf -q -y install gcc gdb && \
-    dnf clean all
+RUN apt-get -y update \
+    && apt -y --no-install-recommends install gcc-8 g++-8 \
+    && apt -y clean all

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if !command -v kaf &>/dev/null; then
+    source <(kaf completion bash)
+fi
+if !command -v rustup &>/dev/null; then
+    source <(rustup completions bash)
+fi

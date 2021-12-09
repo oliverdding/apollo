@@ -6,7 +6,7 @@ WORKING_DIR="$(
 )"
 cd $WORKING_DIR
 
-docker build -t oliverdd/apollo:java .
+docker build --pull -t oliverdd/apollo:java .
 
 if [ -n "$1" ] ;then
   if [ "$1" = "-p" ] ;then

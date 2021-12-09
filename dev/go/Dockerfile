@@ -1,3 +1,5 @@
 FROM oliverdd/apollo:gcc
 
-RUN curl -s -L https://go.dev/dl/go1.15.15.linux-amd64.tar.gz | tar -xzf - -C /usr/local/
+RUN apt-get -y update \
+    && apt -y --no-install-recommends install golang-1.15 \
+    && apt -y clean all

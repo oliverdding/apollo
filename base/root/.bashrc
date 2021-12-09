@@ -3,7 +3,7 @@ export XDG_DATA_HOME=$HOME/.local/share
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_STATE_HOME=$HOME/.local/state
 
-export PATH=$HOME/.local/bin:/usr/local/go/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
 
 export EDITOR=nvim
 export VISUAL=nvim
@@ -22,9 +22,8 @@ export HISTFILE=$XDG_DATA_HOME/bash/history
 export GDBHISTFILE=$XDG_DATA_HOME/gdb/history
 export LESSHISTFILE=-
 
-[[ -f /etc/bashrc ]] && . /etc/bashrc
-[[ -f ~/.local/share/cargo/env ]] && . ~/.local/share/cargo/env
-[[ -s "$XDG_DATA_HOME/sdkman/bin/sdkman-init.sh" ]] && . "$XDG_DATA_HOME/sdkman/bin/sdkman-init.sh"
+[[ -f $XDG_DATA_HOME/cargo/env ]] && . ~/.local/share/cargo/env
+[[ -f $XDG_DATA_HOME/sdkman/bin/sdkman-init.sh ]] && . "$XDG_DATA_HOME/sdkman/bin/sdkman-init.sh"
 
 eval "$(zoxide init bash)"
 eval "$(starship init bash)"
